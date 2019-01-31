@@ -1,0 +1,36 @@
+2.2.1MOOCademy*************************************************************************************
+
+CREATE TABLE 'lesson' ('id_lesson' integer primary key autoincrement,'titre_lesson' text, 'body_lesson' text,'cle_cours' integer, CONSTRAINT fk_les_cour FOREIGN KEY (cle_cours) REFERENCES cours(id_cours));
+
+CREATE TABLE 'cours' (
+'id_cours' INTEGER PRIMARY KEY AUTOINCREMENT,
+'titre_cours' TEXT,
+'description_cours' TEXT);
+
+
+2.2.2. The Hacking Pinterest**********************************************************************
+CREATE TABLE 'users' ('id_user' integer primary key autoincrement,'nom_user' text);
+
+CREATE TABLE 'pins' ('id_pins' INTEGER PRIMARY KEY AUTOINCREMENT ,'url_image' TEXT,'cle_user' INTEGER, CONSTRAINT fk_user_pin FOREIGN KEY (cle_user) REFERENCES users(id_user));
+
+CREATE TABLE 'comment' ( 'id_comment' INTEGER PRIMARY KEY AUTOINCREMENT,'comment' TEXT,'cle_pin' INTEGER,CONSTRAINT fk_com_pin FOREIGN KEY (cle_pin) REFERENCES pins(id_pins));
+
+2.2.3. The Hacking News***************************************************************************
+
+CREATE TABLE 'posts' ('id_post' INTEGER PRIMARY KEY AUTOINCREMENT,'cle_user' INTEGER,CONSTRAINT fk_post_user FOREIGN KEY (cle_user) REFERENCES users_hacknew(id_user));
+
+CREATE TABLE user_hacknew('id_user' INTEGER PRIMARY KEY AUTOINCREMENT,'nom_user' TEXT,'prenom_user' TEXT);
+
+CREATE TABLE sous_com('id_souc' INTEGER PRIMARY KEY AUTOINCREMENT,'sous_comment' TEXT,'cle_com' INTEGER ,'cle_user' INTEGER, CONSTRAINT fk_com_user FOREIGN KEY (cle_com) REFERENCES post(id_com) FOREIGN KEY (cle_user) REFERENCES user_hacknew(id_user) );
+
+CREATE TABLE commentaire('id_com' INTEGER PRIMARY KEY AUTOINCREMENT,'comment' TEXT,'cle_pos' INTEGER , CONSTRAINT fk_com_pos FOREIGN KEY (cle_pos) REFERENCES post(id_post));
+
+
+2.2.4. The Hacking Class**************************************************************************
+
+CREATE TABLE 'eleve' ('id_ele' INTEGER PRIMARY KEY  AUTOINCREMENT,  'nom_eleve' TEXT,'cle_cou' INTEGER,CONSTRAINT fk_elev_cou FOREIGN KEY (cle_cou) , REFERENCES cours_hackclass(id_cours));
+
+
+CREATE TABLE 'cours_hackclass' ('id_cou' INTEGER PRIMARY KEY  AUTOINCREMENT,  'nom_cou' TEXT);
+
+

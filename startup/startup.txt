@@ -1,0 +1,23 @@
+MOOacademy
+create table 'cour'('id_c' integer primary key autoincrement,'titre' text,'description' text);
+create table 'lecon'('id_l'integer primary key autoincrement,'titre' text 'body' text,'id_c'integer,foreign key (id_c) references cour(id_c));
+
+The Hacking Pinterest
+create table 'user'('id_u' integer prymary key autoincrement,'name' text);
+create table 'pins'('id_p'integer primary key autoincrement,'id_u' integer url_img' text,'commentaire' text,foreign key(id_u) references user(id_u) );
+
+2.2.3. The Hacking News
+
+create table 'posts' ('id_p' integer primary key autoincrement,'cle_user' integer,constraint fk_post_user foreign key (cle_user) references users_hacknew(id_user));
+create teble user_hacknew('id_u' integer primary key autoincrement,'nom_user' text,'prenom_user' text);
+create table sous_com('id_souc' integer primary key autoincrement,'sous_comment' text,'cle_com' integer ,'cle_user' integer, constraint fk_com_user forgeign key (cle_com) references post(id_com) forgeign key (cle_user) references user_hacknew(id_user) );
+create table  commentaire('id_com' integer primary key autoincrement,'comment' text,'cle_pos' integer , constrainte fk_com_pos forgeign key (cle_pos) references(id_p));
+
+The Hacking Class
+
+create table 'eleve' ('id_ele' integer primary key autoincrement,  'nom_eleve' text,'cle_cou' integer,constraint fk_elev_cou FOREIGN KEY (cle_cou) , references cours_hackclass(id_cours));
+
+
+create table 'cours_hackclass' ('id_cou' integer primary key autoincrement,  'nom_cou' text);
+
+

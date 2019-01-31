@@ -1,0 +1,14 @@
+    Récupérer tous les albums
+    select*from albums;
+
+recuperation de tous les albums dont le titre contient 'great'
+	select*from albums
+	where title LIKE '%Great%';
+nombre total d'albums contenu dans la base
+	select count(title) from albums
+supression de tous les albums dont les nom contient music
+	delete from albums where title LIKE '%music%'
+recuperer touts les albums ecrit par AC/DC
+	select * from albums join artists on albums.artistId = artists.artists.Id where artists.name = 'ac/dc';	
+recuperer tout les titre de l'albums AC/DC
+	select * from tracks join artist on tracks.artistId = artists.artists.Id where artists.artistId = 1;
